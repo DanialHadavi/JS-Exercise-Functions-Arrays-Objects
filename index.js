@@ -207,10 +207,11 @@ return `This is a ${carMake} ${carModel}`
 */
 function sortCarInventory(inventory) {
   /* code here */
-    return inventory.sort(a,b);
-  }
+    return inventory.sort((a,b) => (a.car_model > b.car_model) ? 1 : -1 );
+}
+  
     
-console.log(sortCarInventory());
+//console.log(sortCarInventory());
 
 /**
  * ### Challenge `getModelYears`
@@ -221,8 +222,14 @@ console.log(sortCarInventory());
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
+function getModelYears(inventory) {
   /* code here */
+  let newArr = [];
+  for (let i = 0; i < inventory.length; i++) {
+    newArr.push(inventory[i].car_year);
+  }
+  return newArr;
+  
 }
 
 /**
@@ -237,8 +244,15 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
+function getOlderCars(inventory , Year) {
   /* code here */
+  let oldCars = [];
+  for(let i = 0; i < inventory.length; i++) {
+    if(inventory[i].car_year <= Year) {
+      oldCars.push(inventory[i]);
+    }
+  }
+  return oldCars;
 }
 
 /**
@@ -252,8 +266,19 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
+function getGermanCars(inventory) {
   /* code here */
+  let germancars = [];
+  for(let i = 0; i < inventory.length; i++) {
+    if(inventory[i].car_make === 'Audi' ||
+      inventory[i].car_make === 'Mercedes-Benz' ||
+      inventory[i].car_make === 'Volkswagen' ||
+      inventory[i].car_make === 'BMW') {
+
+      germancars.push(inventory[i]);
+    }
+  }
+  return germancars;
 }
 
 /**
@@ -274,9 +299,9 @@ function getGermanCars(/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a, b) => {return a + b;} // code here!
+const addFive = (num) => {return num + 5;} // code here!
+const argTimesTwo = (num) => {return num * 2;} // code here!
 
 /**
  * ### Challenge `carMaker`
